@@ -756,7 +756,7 @@ vjs.SeekBar.prototype.onMouseMove = function(event){
 
   // Don't let video end while scrubbing.
   if (newTime == this.player_.duration()) { newTime = newTime - 0.1; }
-
+  if (newTime > this.player_.currentTime()) {newTime = this.player_.currentTime; }  //MARCO testing scrub rules: don't allow seeking forward
   // Set new time (tell player to seek to new time)
   this.player_.currentTime(newTime);
 };
